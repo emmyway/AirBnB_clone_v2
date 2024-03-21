@@ -5,8 +5,17 @@ from models.base_model import Base, BaseModel
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 
+# Association table for the many-to-many rel. btwn Place and Amenity
+place_amenity = Tables("place_amenity", Base.metadata,
+                       column("place_id", String(60),
+                              Foreign_key("places.id"),
+                              Primary_key=True nullable=False),
+                       column("amenity_id", String(60),
+                              Foreign_key("amenities.id"),
+                              Primary_key=True nullable=False))
 
-class Place(BaseModel, Base):
+
+class Place (BaseModel, Base):
     """ A place to stay """
     __tablename__ = "places"
     city_id = Column(String(60), ForeignKey="cities.id", nullable=False)
@@ -20,3 +29,5 @@ class Place(BaseModel, Base):
     latitude = Column(Float, default=0.0, nullable=False)
     longitude = Column(Float, default=0.0, nullable=False)
     amenity_ids = []
+    amenities = relationship("Amenity", secondary=place_amenity,
+                             back_populate="places")
