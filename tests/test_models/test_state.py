@@ -17,3 +17,12 @@ class test_state(test_basemodel):
         """ """
         new = self.value()
         self.assertEqual(type(new.name), str)
+
+    def test_cities_type(self):
+        """Test if cities attribute is of type list"""
+        self.assertIsInstance(self.state.cities, list)
+
+    def test_cities_content(self):
+        """Test if cities attribute contains City instances"""
+        self.assertTrue(all(isinstance(city, BaseModel)
+                            for city in self.state.cities))
