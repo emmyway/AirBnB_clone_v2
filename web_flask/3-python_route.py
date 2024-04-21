@@ -44,7 +44,7 @@ def python(text="is cool"):
        (replace underscore _ symbols with a space )
        The default value of text is 'is cool'
     """
-    text = = text.replace("_", " ")
+    text = text.replace("_", " ")
     return "Python {}".format(text)
 
 
