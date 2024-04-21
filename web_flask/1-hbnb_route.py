@@ -26,7 +26,7 @@ def home_hbnb():
 def hbnb():
     """To display "Hello HBNB!"
     """
-    return "Hello HBNB!"
+    return "HBNB"
 
 
 if __name__ == '__main__':
