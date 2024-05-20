@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''
 script starts a Flask web application, listening  on 0.0.0.0, \
-port 5000 and Routes: /
+port 5000 and Routes: / and /hbnb
 '''
 from flask import Flask
 
@@ -9,11 +9,19 @@ app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def root():
+def hello_hbnb():
     '''
-    Routes: / and return string
+    Routes: / and returns string
     '''
     return "Hello HBNB!"
+
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    '''
+    Routes: /hbnb and returns string
+    '''
+    return "HBNB!"
 
 
 if __name__ == "__main__":
